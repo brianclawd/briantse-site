@@ -1,63 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brian Tse</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #fff;
-        }
-        .container {
-            text-align: center;
-            padding: 2rem;
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-        }
-        .title {
-            font-size: 1.1rem;
-            color: #8892b0;
-            margin-bottom: 2rem;
-        }
-        .links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .links a {
-            color: #64ffda;
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            border: 1px solid #64ffda;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-        .links a:hover {
-            background: rgba(100, 255, 218, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brian Tse — Story</title>
+  <style>
+    :root {
+      --bg: #06070b;
+      --card: #10131b;
+      --text: #e9edf5;
+      --muted: #8f98ad;
+      --line: #222a3a;
+      --accent: #62d0ff;
+      --active: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: radial-gradient(1200px 700px at 80% -10%, #1a2545 0%, var(--bg) 45%);
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .wrap { max-width: 980px; margin: 0 auto; padding: 28px 20px 70px; }
+
+    .mode-bar {
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      background: rgba(8, 10, 15, 0.66);
+      border: 1px solid #1f283a;
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .mode-btn {
+      border: 1px solid #2a3550;
+      background: #151b2a;
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .mode-btn.active {
+      border-color: #4f8cff;
+      background: #1d2b52;
+    }
+
+    .notice {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--muted);
+      display: none;
+    }
+
+    .notice.show { display: block; }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 20px 0 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .subhead { color: var(--muted); margin-bottom: 24px; }
+
+    .slides {
+      display: grid;
+      gap: 18px;
+    }
+
+    .slide {
+      border: 1px solid #1a2233;
+      background: linear-gradient(180deg, #0f1420 0%, #0b0f17 100%);
+      border-radius: 14px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      min-height: 180px;
+    }
+
+    .story-line {
+      color: #9aa3b8;
+      transition: color 220ms ease, transform 220ms ease;
+      margin: 10px 0;
+      border-left: 2px solid transparent;
+      padding-left: 10px;
+    }
+
+    .story-line.active-line {
+      color: var(--active);
+      border-left-color: var(--accent);
+      transform: translateX(2px);
+    }
+
+    .logo-box {
+      border: 1px solid #263148;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      min-height: 140px;
+      padding: 10px;
+      background: #0e1320;
+    }
+
+    .logo-img {
+      max-width: min(180px, 100%);
+      max-height: 85px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.92;
+      filter: grayscale(0.1);
+    }
+
+    .tools-link {
+      color: #9ddcff;
+      text-underline-offset: 3px;
+    }
+
+    @media (max-width: 760px) {
+      .slide { grid-template-columns: 1fr; }
+      .notice { width: 100%; margin-left: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .story-line { transition: none; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Brian Tse</h1>
-        <p class="title">Anesthesiologist · San Mateo, CA</p>
-        <div class="links">
-            <a href="mailto:briantse@gmail.com">Email</a>
-            <a href="https://linkedin.com/in/briantse">LinkedIn</a>
-            <a href="https://cardmax.cc">CardMax</a>
-        </div>
+  <div class="wrap">
+    <div class="mode-bar">
+      <button class="mode-btn" id="playBtn">Play with music</button>
+      <button class="mode-btn active" id="readBtn">Read without music</button>
+      <span class="notice" id="modeNotice" aria-live="polite"></span>
     </div>
+
+    <h1>Building for clinicians</h1>
+    <p class="subhead">A short story in slides</p>
+
+    <main class="slides">
+      <section class="slide">
+        <div>
+          <p class="story-line">Started at Stanford, learning systems in ME101.</p>
+          <p class="story-line">Loved the blend of technical thinking and human impact.</p>
+        </div>
+        <div class="logo-box"><img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Stanford_Cardinal_logo.svg" alt="" aria-hidden="true"></div>
+      </section>
+
+      <section class="slide">
+        <div>
+          <p class="story-line">Medical training at UCLA sharpened clinical judgment.</p>
+          <p class="story-line">I kept asking how workflows could be simpler.</p>
+        </div>
+        <div class="logo-box"><img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/4/4f/UCLA_Bruins_script.svg" alt="" aria-hidden="true"></div>
+      </section>
+
+      <section class="slide">
+        <div>
+          <p class="story-line">At AgileMD, I saw real software used at the bedside.</p>
+          <p class="story-line">That bridge between medicine and product stuck with me.</p>
+        </div>
+        <div class="logo-box"><img class="logo-img" src="https://logo.clearbit.com/agilemd.com" alt="" aria-hidden="true"></div>
+      </section>
+
+      <section class="slide">
+        <div>
+          <p class="story-line">Back to Stanford Medicine for anesthesiology training.</p>
+          <p class="story-line">Operations became the recurring theme.</p>
+        </div>
+        <div class="logo-box"><img class="logo-img" src="https://logo.clearbit.com/stanfordhealthcare.org" alt="" aria-hidden="true"></div>
+      </section>
+
+      <section class="slide">
+        <div>
+          <p class="story-line">Practiced at El Camino Health.</p>
+          <p class="story-line">High-volume care exposes every friction point.</p>
+        </div>
+        <div class="logo-box"><img class="logo-img" src="https://logo.clearbit.com/elcaminohealth.org" alt="" aria-hidden="true"></div>
+      </section>
+
+      <section class="slide">
+        <div>
+          <p class="story-line">At Mills-Peninsula, internal scheduling workflow matters daily.</p>
+          <p class="story-line">Reliable systems reduce burnout and missed details.</p>
+        </div>
+        <div class="logo-box"><img class="logo-img" src="https://logo.clearbit.com/sutterhealth.org" alt="" aria-hidden="true"></div>
+      </section>
+
+      <section class="slide">
+        <div>
+          <p class="story-line">Now using Claude to prototype faster and iterate in hours.</p>
+          <p class="story-line">Built tools like <a class="tools-link" href="https://vaporchart.com" target="_blank" rel="noreferrer">VAPOR Chart</a>.</p>
+        </div>
+        <div class="logo-box"><img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Anthropic_logo.svg" alt="" aria-hidden="true"></div>
+      </section>
+
+      <section class="slide">
+        <div>
+          <p class="story-line">I want to build what gives clinicians time back.</p>
+        </div>
+        <div class="logo-box" aria-hidden="true"></div>
+      </section>
+    </main>
+
+    <audio id="bgAudio" preload="none" loop>
+      <source src="assets/audio/story.mp3" type="audio/mpeg" />
+    </audio>
+  </div>
+
+  <script>
+    const lines = Array.from(document.querySelectorAll('.story-line'));
+    const playBtn = document.getElementById('playBtn');
+    const readBtn = document.getElementById('readBtn');
+    const notice = document.getElementById('modeNotice');
+    const bgAudio = document.getElementById('bgAudio');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function setMode(mode, message = '') {
+      const play = mode === 'play';
+      playBtn.classList.toggle('active', play);
+      readBtn.classList.toggle('active', !play);
+
+      if (play) {
+        bgAudio.play().then(() => {
+          notice.textContent = message || '';
+          notice.classList.toggle('show', !!message);
+        }).catch(() => {
+          setMode('read', 'Audio unavailable. Switched to reading mode.');
+        });
+      } else {
+        bgAudio.pause();
+        if (message) {
+          notice.textContent = message;
+          notice.classList.add('show');
+        }
+      }
+    }
+
+    playBtn.addEventListener('click', () => setMode('play'));
+    readBtn.addEventListener('click', () => setMode('read', ''));
+
+    const lineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle('active-line', entry.isIntersecting && entry.intersectionRatio > 0.65);
+      });
+    }, { threshold: [0.65] });
+
+    lines.forEach(line => lineObserver.observe(line));
+
+    if (reduceMotion) {
+      setMode('read', 'Reduced motion is on — reading mode enabled.');
+    }
+  </script>
 </body>
 </html>
