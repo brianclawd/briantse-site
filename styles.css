@@ -125,6 +125,43 @@ html, body {
   transform: translateY(0);
 }
 
+.logo-stanford {
+  width: min(170px, 42vw);
+  margin-top: 8px;
+}
+
+.logo-ucla {
+  width: min(300px, 72vw);
+  max-height: 110px;
+  margin-top: 28px;
+}
+
+.logo-agile {
+  width: min(280px, 68vw);
+  max-height: 90px;
+  margin-top: 26px;
+}
+
+.logo-stanford-med {
+  width: min(210px, 50vw);
+  max-height: 130px;
+  margin-top: 24px;
+}
+
+.logo-claude {
+  width: min(185px, 44vw);
+  max-height: 85px;
+  margin-top: 14px;
+}
+
+.logo-vapor {
+  width: min(110px, 26vw);
+  max-height: 110px;
+  margin-top: 12px;
+  border-radius: 18px;
+  box-shadow: 0 10px 20px rgba(12, 36, 84, 0.15);
+}
+
 .thesis p {
   font-size: clamp(2.1rem, 5vw, 4.6rem);
   font-weight: 800;
