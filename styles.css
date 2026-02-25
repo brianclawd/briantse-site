@@ -126,40 +126,40 @@ html, body {
 }
 
 .logo-stanford {
-  width: min(170px, 42vw);
-  margin-top: 8px;
+  width: min(190px, 46vw);
+  margin-top: 10px;
 }
 
 .logo-ucla {
-  width: min(300px, 72vw);
-  max-height: 110px;
-  margin-top: 28px;
+  width: min(320px, 76vw);
+  max-height: 120px;
+  margin-top: 34px;
 }
 
 .logo-agile {
-  width: min(280px, 68vw);
-  max-height: 90px;
-  margin-top: 26px;
+  width: min(300px, 72vw);
+  max-height: 96px;
+  margin-top: 32px;
 }
 
 .logo-stanford-med {
-  width: min(210px, 50vw);
-  max-height: 130px;
-  margin-top: 24px;
+  width: min(230px, 54vw);
+  max-height: 138px;
+  margin-top: 28px;
 }
 
 .logo-claude {
-  width: min(185px, 44vw);
-  max-height: 85px;
-  margin-top: 14px;
+  width: min(210px, 48vw);
+  max-height: 92px;
+  margin-top: 20px;
 }
 
 .logo-vapor {
-  width: min(110px, 26vw);
-  max-height: 110px;
-  margin-top: 12px;
-  border-radius: 18px;
-  box-shadow: 0 10px 20px rgba(12, 36, 84, 0.15);
+  width: min(125px, 30vw);
+  max-height: 125px;
+  margin-top: 16px;
+  border-radius: 20px;
+  box-shadow: 0 12px 24px rgba(12, 36, 84, 0.18);
 }
 
 .thesis p {
