@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="220" viewBox="0 0 640 220" role="img" aria-label="Claude by Anthropic">
+  <rect width="640" height="220" rx="22" fill="#111111"/>
+  <text x="50%" y="46%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" fill="#ffffff">Claude</text>
+  <text x="50%" y="70%" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="600" fill="#d4d4d4">by Anthropic</text>
+</svg>
