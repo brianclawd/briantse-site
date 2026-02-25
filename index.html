@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brian K. Tse, MD — Story</title>
-  <meta name="description" content="I want to build what gives clinicians time back." />
+  <meta name="description" content="Build what gives clinicians time back." />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -18,64 +18,99 @@
   </header>
 
   <main id="story" class="story">
-    <section class="panel active">
-      <p>I wanted to be a builder before I knew what that meant.</p>
-      <div class="logo-wrap"><img src="./assets/logos/stanford.svg" alt="" aria-hidden="true" /></div>
-    </section>
-
-    <section class="panel">
-      <p>Stanford. Biomechanical engineering. ME101 taught me to build in the physical world.</p>
-      <div class="logo-wrap"><img src="./assets/logos/stanford.svg" alt="" aria-hidden="true" /></div>
-    </section>
-
-    <section class="panel">
-      <p>An orthopedic mentor introduced me to the OR. I fell in love with healing people.</p>
-      <div class="logo-wrap"><img src="./assets/logos/ucla.svg" alt="" aria-hidden="true" /></div>
-    </section>
-
-    <section class="panel">
-      <p>UCLA medicine, then a startup year at AgileMD. Early, but formative.</p>
-      <div class="logo-wrap"><img src="./assets/logos/agilemd.svg" alt="" aria-hidden="true" /></div>
-    </section>
-
-    <section class="panel">
-      <p>Back to training at Stanford in internal medicine and anesthesiology.</p>
-      <div class="logo-wrap"><img src="./assets/logos/stanford-medicine.svg" alt="" aria-hidden="true" /></div>
-    </section>
-
-    <section class="panel">
-      <p>Seven years into attending practice at El Camino Health and Mills-Peninsula, still pulled by that same builder instinct.</p>
-      <div class="logo-wrap"><img src="./assets/logos/elcamino.svg" alt="" aria-hidden="true" /></div>
-    </section>
-
-    <section class="panel">
-      <p>Then Claude removed my technical ceiling.</p>
-      <div class="logo-wrap"><img src="./assets/logos/anthropic.svg" alt="" aria-hidden="true" /></div>
-    </section>
-
-    <section class="panel">
-      <p>I overhauled internal scheduling workflow and built tools like <a class="link-inline" href="https://vaporchart.com" target="_blank" rel="noopener">VAPOR Chart</a> for anesthesiologists.</p>
-      <div class="logo-wrap"><img src="./assets/logos/mills-peninsula.svg" alt="" aria-hidden="true" /></div>
-    </section>
-
-    <section class="panel thesis">
-      <p>I want to build what gives clinicians time back.</p>
-      <div class="logo-wrap" aria-hidden="true"></div>
+    <section class="panel active"><div class="panel-inner"><p>I wanted to be a builder before I knew what that meant.</p></div></section>
+    <section class="panel"><div class="panel-inner"><p>Stanford. Biomechanical engineering. ME101 taught me to build in the physical world.</p><img class="logo-inline" src="./assets/logos/stanford.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>An orthopedic mentor introduced me to the OR. I fell in love with healing people.</p><img class="logo-inline" src="./assets/logos/ucla.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>UCLA medicine, then a startup year at AgileMD. Early, but formative.</p><img class="logo-inline" src="./assets/logos/agilemd.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>Back to training at Stanford in internal medicine and anesthesiology.</p><img class="logo-inline" src="./assets/logos/stanford-medicine.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>Seven years into attending practice at El Camino Health and Mills-Peninsula, still pulled by that same builder instinct.</p><img class="logo-inline" src="./assets/logos/elcamino.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>Then Claude removed my technical ceiling.</p><img class="logo-inline" src="./assets/logos/anthropic.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>I overhauled internal scheduling workflows and built tools like <a class="inline-link" href="https://vaporchart.com" target="_blank" rel="noopener">VAPOR Chart</a> for anesthesiologists.</p><img class="logo-inline" src="./assets/logos/mills-peninsula.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel thesis"><div class="panel-inner"><p>Build what gives clinicians time back.</p></div></section>
+    <section class="panel end-panel">
+      <div class="end-links actions">
+        <a href="./Brian_Tse_Resume_v2.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="./Brian_Tse_Cover_Letter_Anthropic.pdf" target="_blank" rel="noopener">Cover Letter</a>
+        <a href="mailto:briantse@gmail.com">Contact</a>
+      </div>
     </section>
   </main>
 
-  <audio id="storyAudio" preload="metadata">
+  <audio id="storyAudio" preload="auto">
     <source src="./media/story-track.mp3" type="audio/mpeg" />
   </audio>
 
-  <div class="controls">
-    <div class="mode-row">
-      <button id="playBtn" class="mode-btn" type="button">Play with music</button>
-      <button id="readBtn" class="mode-btn active" type="button">Read without music</button>
-    </div>
-    <div id="modeNotice" class="notice" aria-live="polite"></div>
-  </div>
+  <button id="musicToggle" class="music-toggle" type="button">▶ Play with music</button>
+  <div class="hint">Story auto-scrolls with music</div>
 
-  <script src="./script.js"></script>
+  <script>
+    const panels = [...document.querySelectorAll('.panel')];
+    const audio = document.getElementById('storyAudio');
+    const toggle = document.getElementById('musicToggle');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          panels.forEach(p => p.classList.remove('active'));
+          e.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.65 });
+    panels.forEach(p => io.observe(p));
+
+    function scrollToPanel(i) {
+      panels[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    const cues = [0, 5, 10, 15, 20, 24, 29, 34, 40, 46];
+
+    function syncToMusic() {
+      const t = audio.currentTime;
+      let idx = 0;
+      for (let i = 0; i < cues.length; i++) {
+        if (t >= cues[i]) idx = i;
+      }
+      const last = panels.length - 1;
+      if (idx >= last) {
+        scrollToPanel(last);
+        clearInterval(syncTimer);
+        return;
+      }
+      scrollToPanel(idx);
+    }
+
+    let syncTimer;
+    async function startMusicMode() {
+      try {
+        if (audio.currentTime >= (audio.duration || 0) - 0.2) {
+          audio.currentTime = 0;
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        await audio.play();
+        toggle.textContent = '❚❚ Pause music';
+        clearInterval(syncTimer);
+        syncToMusic();
+        syncTimer = setInterval(syncToMusic, 600);
+      } catch (e) {
+        toggle.textContent = 'Tap to start audio';
+      }
+    }
+
+    function pauseMusicMode() {
+      audio.pause();
+      clearInterval(syncTimer);
+      toggle.textContent = '▶ Play with music';
+    }
+
+    toggle.addEventListener('click', () => {
+      if (audio.paused) startMusicMode();
+      else pauseMusicMode();
+    });
+
+    audio.addEventListener('ended', () => {
+      clearInterval(syncTimer);
+      toggle.textContent = '↺ Replay with music';
+    });
+  </script>
 </body>
 </html>
