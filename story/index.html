@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brian Tse, MD - Story</title>
+  <meta name="description" content="I want to build what gives clinicians time back." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+  <video id="bgVideo" class="bg-video" autoplay muted loop playsinline preload="metadata">
+    <source src="../media/story-video.mp4" type="video/mp4" />
+  </video>
+  <div class="video-vignette"></div>
+
+  <header class="topbar">
+    <div class="name"><a href="/" style="text-decoration:none;color:inherit;">Brian Tse, MD</a></div>
+  </header>
+
+  <main id="story" class="story">
+    <section class="panel active"><div class="panel-inner"><p>I've always been drawn to building systems that make hard things feel simpler and reduce inefficiency.</p></div></section>
+    <section class="panel"><div class="panel-inner"><p>At Stanford, I studied biomechanical engineering and learned how thoughtful design can shape real-world outcomes.</p><img class="logo-inline logo-stanford" src="../assets/logos/stanford.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>An orthopedic surgeon mentored me and introduced me to the OR, and I was hooked by the privilege of caring for people at their most vulnerable.</p></div></section>
+    <section class="panel"><div class="panel-inner"><p>At UCLA, medical training deepened my clinical instincts and showed me how much workflow affects patient care.</p><img class="logo-inline logo-ucla" src="https://medschool.ucla.edu/sites/default/files/logos/logo-2.svg" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>I took a year off from med school to join AgileMD (YC Summer 2011), where I helped build clinical guidelines and saw how software could support decision-making at the bedside.</p><img class="logo-inline logo-agile" src="https://cdn.prod.website-files.com/62d742c41f3f8d04dc13c14c/6618bf7efeaeb84f943034f7_logo_agilemd_blue-p-500.png" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>I returned to Stanford for internal medicine and anesthesiology, where precision, teamwork, and workflow mattered every single day.</p><img class="logo-inline logo-stanford-med" src="https://med.stanford.edu/content/dam/sm/identity/images/stanford-medicine/looks/logos/SM_Web_vert_LG.png" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>Years into attending practice, I notice so many friction points and inefficiencies: too many manual administrative tasks that take away time and attention from patients.</p></div></section>
+    <section class="panel"><div class="panel-inner"><p>Then Claude removed my technical ceiling, and ideas that used to stall could finally become working tools.</p><img class="logo-inline logo-claude" src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/claude-color.png" alt="" aria-hidden="true" /></div></section>
+    <section class="panel"><div class="panel-inner"><p>I rebuilt internal scheduling workflows and started building tools like <a class="inline-link" href="https://vaporchart.com" target="_blank" rel="noopener">VAPOR Chart</a> to reduce administrative drag for anesthesiologists.</p><img class="logo-inline logo-vapor" src="../assets/logos/vaporchart.png" alt="" aria-hidden="true" /></div></section>
+    <section class="panel thesis"><div class="panel-inner"><p>I want to build what gives clinicians time back.</p></div></section>
+    <section class="panel end-panel">
+      <div class="end-links actions">
+        <a href="../Brian_Tse_CV.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="../Brian_Tse_Cover_Letter_Anthropic.pdf" target="_blank" rel="noopener">Cover Letter</a>
+        <a href="mailto:briantse@gmail.com">Contact</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const panels = [...document.querySelectorAll('.panel')];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          panels.forEach(p => p.classList.remove('active'));
+          e.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.58 });
+    panels.forEach(p => io.observe(p));
+  </script>
+</body>
+</html>

@@ -68,7 +68,8 @@ html, body {
 .actions a:hover { background: rgba(255,255,255,0.96); }
 
 .end-panel {
-  padding-top: 140px;
+  min-height: 58vh;
+  padding-top: 56px;
 }
 .end-links {
   justify-content: center;
@@ -105,10 +106,10 @@ html, body {
 
 .story { position: relative; z-index: 10; }
 .panel {
-  min-height: 100vh;
+  min-height: 72vh;
   display: grid;
   place-items: center;
-  padding: 110px 24px 80px;
+  padding: 88px 24px 52px;
 }
 .panel-inner {
   display: grid;

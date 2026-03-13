@@ -3,121 +3,198 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brian K. Tse, MD - Story</title>
-  <meta name="description" content="I want to build what gives clinicians time back." />
+  <title>Brian Tse MD Inc</title>
+  <meta name="description" content="Brian Tse MD Inc is an anesthesiology practice and health technology company based in San Mateo, California." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png" />
-  <link rel="stylesheet" href="./styles.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --text: #1a2740;
+      --text-secondary: #4a5a72;
+      --accent: #0a7f5a;
+      --accent-light: rgba(10, 127, 90, 0.08);
+      --bg: #fafbfd;
+      --line: rgba(26, 39, 64, 0.1);
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle background grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: 0.3;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 256px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Soft gradient wash */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 900px 600px at 15% 0%, rgba(10, 127, 90, 0.04), transparent 60%),
+        radial-gradient(ellipse 700px 500px at 85% 100%, rgba(26, 39, 64, 0.03), transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      width: 100%;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .company-name {
+      font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+      font-weight: 600;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+      margin: 28px 0;
+      border-radius: 1px;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 540px;
+    }
+
+    .description a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(10, 127, 90, 0.3);
+      transition: text-decoration-color 0.2s ease;
+    }
+
+    .description a:hover {
+      text-decoration-color: var(--accent);
+    }
+
+    .location {
+      margin-top: 32px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+
+    .contact {
+      margin-top: 36px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .contact a {
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .contact-primary {
+      background: var(--text);
+      color: #fff;
+    }
+
+    .contact-primary:hover {
+      background: #2a3b56;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(26, 39, 64, 0.15);
+    }
+
+    .contact-secondary {
+      color: var(--text-secondary);
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .contact-secondary:hover {
+      border-color: rgba(26, 39, 64, 0.25);
+      color: var(--text);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(26, 39, 64, 0.08);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 80px;
+      font-size: 0.78rem;
+      color: rgba(74, 90, 114, 0.5);
+      text-align: center;
+    }
+
+    @media (max-width: 520px) {
+      body { padding: 36px 20px; justify-content: flex-start; padding-top: 72px; }
+      .contact { flex-direction: column; align-items: stretch; }
+      .contact a { text-align: center; }
+    }
+  </style>
 </head>
 <body>
-  <video id="bgVideo" class="bg-video" autoplay muted loop playsinline preload="metadata">
-    <source src="./media/story-video.mp4" type="video/mp4" />
-  </video>
-  <div class="video-vignette"></div>
 
-  <header class="topbar">
-    <div class="name">Brian Tse, MD</div>
-  </header>
-
-  <main id="story" class="story">
-    <section class="panel active"><div class="panel-inner"><p>I’ve always been drawn to building systems that make hard things feel simpler and reduce inefficiency.</p></div></section>
-    <section class="panel"><div class="panel-inner"><p>At Stanford, I studied biomechanical engineering and learned how thoughtful design can shape real-world outcomes.</p><img class="logo-inline logo-stanford" src="./assets/logos/stanford.svg" alt="" aria-hidden="true" /></div></section>
-    <section class="panel"><div class="panel-inner"><p>An orthopedic surgeon mentored me and introduced me to the OR, and I was hooked by the privilege of caring for people at their most vulnerable.</p></div></section>
-    <section class="panel"><div class="panel-inner"><p>At UCLA, medical training deepened my clinical instincts and showed me how much workflow affects patient care.</p><img class="logo-inline logo-ucla" src="https://medschool.ucla.edu/sites/default/files/logos/logo-2.svg" alt="" aria-hidden="true" /></div></section>
-    <section class="panel"><div class="panel-inner"><p>I took a year off from med school to join AgileMD (YC Summer 2011), where I helped build clinical guidelines and saw how software could support decision-making at the bedside.</p><img class="logo-inline logo-agile" src="https://cdn.prod.website-files.com/62d742c41f3f8d04dc13c14c/6618bf7efeaeb84f943034f7_logo_agilemd_blue-p-500.png" alt="" aria-hidden="true" /></div></section>
-    <section class="panel"><div class="panel-inner"><p>I returned to Stanford for internal medicine and anesthesiology, where precision, teamwork, and workflow mattered every single day.</p><img class="logo-inline logo-stanford-med" src="https://med.stanford.edu/content/dam/sm/identity/images/stanford-medicine/looks/logos/SM_Web_vert_LG.png" alt="" aria-hidden="true" /></div></section>
-    <section class="panel"><div class="panel-inner"><p>Years into attending practice, I notice so many friction points and inefficiencies: too many manual administrative tasks that take away time and attention from patients.</p></div></section>
-    <section class="panel"><div class="panel-inner"><p>Then Claude removed my technical ceiling, and ideas that used to stall could finally become working tools.</p><img class="logo-inline logo-claude" src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/light/claude-color.png" alt="" aria-hidden="true" /></div></section>
-    <section class="panel"><div class="panel-inner"><p>I rebuilt internal scheduling workflows and started building tools like <a class="inline-link" href="https://vaporchart.com" target="_blank" rel="noopener">VAPOR Chart</a> to reduce administrative drag for anesthesiologists.</p><img class="logo-inline logo-vapor" src="./assets/logos/vaporchart.png" alt="" aria-hidden="true" /></div></section>
-    <section class="panel thesis"><div class="panel-inner"><p>I want to build what gives clinicians time back.</p></div></section>
-    <section class="panel end-panel">
-      <div class="end-links actions">
-        <a href="./Brian_Tse_Resume_v2.pdf" target="_blank" rel="noopener">Resume</a>
-        <a href="./Brian_Tse_Cover_Letter_Anthropic.pdf" target="_blank" rel="noopener">Cover Letter</a>
-        <a href="mailto:briantse@gmail.com">Contact</a>
-      </div>
-    </section>
+  <main class="page">
+    <h1 class="company-name">Brian Tse MD Inc</h1>
+    <div class="divider"></div>
+    <p class="description">
+      An anesthesiology practice based in San Mateo, California, providing anesthesia services for outpatient surgery centers. We also develop health technology tools&hairsp;&mdash;&hairsp;including <a href="https://vaporchart.com" target="_blank" rel="noopener">VaporChart</a>, an iPad-based anesthesia charting app built to reduce administrative burden for independent providers.
+    </p>
+    <p class="location">San Mateo, California</p>
+    <div class="contact">
+      <a class="contact-primary" href="mailto:briantse@gmail.com">Contact Us</a>
+      <a class="contact-secondary" href="/story">About Dr.&nbsp;Tse</a>
+    </div>
   </main>
 
-  <audio id="storyAudio" preload="auto">
-    <source src="./media/story-track.mp3" type="audio/mpeg" />
-  </audio>
+  <footer>&copy; 2025 Brian Tse MD Inc</footer>
 
-  <button id="musicToggle" class="music-toggle" type="button">▶ Play with music</button>
-  <div class="hint">Story auto-scrolls with music</div>
-
-  <script>
-    const panels = [...document.querySelectorAll('.panel')];
-    const audio = document.getElementById('storyAudio');
-    const toggle = document.getElementById('musicToggle');
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          panels.forEach(p => p.classList.remove('active'));
-          e.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.65 });
-    panels.forEach(p => io.observe(p));
-
-    function scrollToPanel(i) {
-      panels[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    const cues = [0, 5, 10, 15, 20, 26, 32, 38, 44, 50, 56];
-
-    function syncToMusic() {
-      const t = audio.currentTime;
-      let idx = 0;
-      for (let i = 0; i < cues.length; i++) {
-        if (t >= cues[i]) idx = i;
-      }
-      const last = panels.length - 1;
-      if (idx >= last) {
-        scrollToPanel(last);
-        clearInterval(syncTimer);
-        return;
-      }
-      scrollToPanel(idx);
-    }
-
-    let syncTimer;
-    async function startMusicMode() {
-      try {
-        if (audio.currentTime >= (audio.duration || 0) - 0.2) {
-          audio.currentTime = 0;
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        await audio.play();
-        toggle.textContent = '❚❚ Pause music';
-        clearInterval(syncTimer);
-        syncToMusic();
-        syncTimer = setInterval(syncToMusic, 600);
-      } catch (e) {
-        toggle.textContent = 'Tap to start audio';
-      }
-    }
-
-    function pauseMusicMode() {
-      audio.pause();
-      clearInterval(syncTimer);
-      toggle.textContent = '▶ Play with music';
-    }
-
-    toggle.addEventListener('click', () => {
-      if (audio.paused) startMusicMode();
-      else pauseMusicMode();
-    });
-
-    audio.addEventListener('ended', () => {
-      clearInterval(syncTimer);
-      toggle.textContent = '↺ Replay with music';
-    });
-  </script>
 </body>
 </html>
